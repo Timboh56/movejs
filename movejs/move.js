@@ -15,43 +15,43 @@ Region.prototype.onMove = function() {
 	if (this.moveFunction != null) this.moveFunction();
 }
 
-var move = (function($) {
-	return { 
-		
-		// initialize constructor takes parameters:
-		// 	id of video tag, 
-		// 	id of canvas to be drawn on, 
-		// 	regions array containing region objects,
-		//	properties object that defines properties for class
-		initialize: function(camera_id, canvas_id, blend_id, regions, properties) {
-			var self = this;
-			
-			// set properties or use default properties			
-			var properties = properties || { 'display_canvas': 'none', 'interval': 1000 };			
-			
-			this.stream = $('#' + camera_id)[0];
-			this.cnvs = $('#' + canvas_id)[0];
-			this.cnvs_blended = $('#' + blend_id)[0];
-			
-			// get contexts of canvases
-			this.cnvs_ctxt = this.cnvs.getContext('2d');
-			this.blended_ctxt = this.cnvs_blended.getContext('2d');
-			
-			// apply properties
-			this.stream.style.display = properties.display_canvas, 
-				this.cnvs.style.display = properties.display_canvas,
-				this.interval = properties.interval;
-			
-			this.regions = regions;
-			this.timeout = false;					
-		    this.last_image_data;
-			
-			this.cnvs_ctxt.translate(this.cnvs.width,0);
-			this.cnvs_ctxt.scale(-1,1);
-		    
-			this.webcamSetup().done( function() { self.update(); });
-		},
+var Move = (function($) {
 	
+	// initialize constructor takes parameters:
+	// 	id of video tag, 
+	// 	id of canvas to be drawn on, 
+	// 	regions array containing region objects,
+	//	properties object that defines properties for class
+	function Move(camera_id, canvas_id, blend_id, regions, properties) {		
+		var self = this;
+		
+		// set properties or use default properties			
+		var properties = properties || { 'display_canvas': 'none', 'interval': 1000 };			
+		
+		this.stream = $('#' + camera_id)[0];
+		this.cnvs = $('#' + canvas_id)[0];
+		this.cnvs_blended = $('#' + blend_id)[0];
+		
+		// get contexts of canvases
+		this.cnvs_ctxt = this.cnvs.getContext('2d');
+		this.blended_ctxt = this.cnvs_blended.getContext('2d');
+		
+		// apply properties
+		this.stream.style.display = properties.display_canvas, 
+			this.cnvs.style.display = properties.display_canvas,
+			this.interval = properties.interval;
+		
+		this.regions = regions;
+		this.timeout = false;					
+	    this.last_image_data;
+		
+		this.cnvs_ctxt.translate(this.cnvs.width,0);
+		this.cnvs_ctxt.scale(-1,1);
+	    
+		this.webcamSetup().done( function() { self.update(); });
+	}
+	
+	Move.prototype = { 
 		webcamSetup: function() {
 			var self = this;
 			navigator.usermedia = (navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -167,4 +167,6 @@ var move = (function($) {
 			}
 		}
 	};
+	
+	return Move;
 })(jQuery);
