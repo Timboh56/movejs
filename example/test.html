@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<head>
+	  <script src="jquery-1.10.1.min.js"></script>
+	  <script src="../movejs/move.js"></script>
+	  <link rel="stylesheet" href="webcam.css" type="text/css" />
+  
+	</head>
+	<body>
+		<div id="vid_container">
+			<video id="camera_stream" width="640" height="480" autoplay></video>
+			<canvas id="canvas" width="640" height="480"></canvas>
+			<canvas id="canvas_blended" width="640" height="480"></canvas>
+		</div>
+		
+		<script type="text/javascript">
+		$(
+			function() {
+				var regions = [
+					region1 = new Region(0,0,100,100,'#00FF00'),
+					region2 = new Region(540,0,100,100,'#00FF00', function() {
+							console.log('this function was executed!');
+					})
+				];
+				move.initialize('camera_stream','canvas','canvas_blended',regions);
+			}
+		);
+		</script>
+	</body>
+</html>
