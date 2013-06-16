@@ -2,28 +2,34 @@
 <head>
 	  <link rel="stylesheet" href="webcam.css" type="text/css" />
 	  <script src="jquery-1.10.1.min.js"></script>
-	  <script src="page.js"></script>
 	  <script src="../movejs/move.js"></script>
+	  <script src="page.js"></script>
+	  
 </head>
 <body>
+	
 	<section class="pages-container">
+		<div id="vid_container">
+			<video id="camera_stream" width="320" height="240" autoplay></video>
+			<canvas id="canvas" width="320" height="240"></canvas>
+			<canvas id="canvas_blended" width="320" height="240"></canvas>
+		</div>	
+		
 		<section class="page1">
 			<div class="wrapper">
+				<h1>YOU'RE MOVING</h1>
 			</div>
-			some text
 		</section>
 		
 		<section class="page2">
 			<div class="wrapper">
-			</div>
-			some text
-			
+				<h1>YEA GETTING EXERCISE! </h1>
+			</div>			
 		</section>
 		<section class="page3">
 			<div class="wrapper">
-			</div>
-			some text
-			
+				<h1> NOT GETTING TIRED AT ALL! </h1>
+			</div>			
 		</section>
 	</div>
 </body>

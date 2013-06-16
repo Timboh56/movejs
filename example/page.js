@@ -6,10 +6,7 @@
 			pageContainer = $('.pages-container'),
 			pageWidth = (100/pages.length) + '%',
 			anchors = $('a'), n = 0, 
-			isSmooth = false;
-			
-		init();
-			
+			isSmooth = false;			
 			
 		function init() {
 			pageContainer.css('width', pages.length+'00%');	
@@ -19,7 +16,7 @@
 			}
 		}
 		
-		function move(n) {
+		function movePage(n) {
 			pageContainer.animate(
 					{
 						'margin-left': '-'+n+'00%'
@@ -27,18 +24,22 @@
 		}
 		
 	
-		window.addEventListener("keydown", function(evt) {
-			evt = evt.keyCode || window.event.keyCode;
-			if (evt == 37) {
-				(n === 0) ? n = 2 : n--;
-				move(n);
-			}
-			
-			if (evt == 39) {
-				(n === 2) ? n = 0 : n++;
-				move(n);
-			}
-		}, false);
+		function moveLeft(){
+			(n === 0) ? n = 2 : n--;
+			movePage(n);
+		}
+		
+		function moveRight(){			
+			(n === 2) ? n = 0 : n++;
+			movePage(n);
+		}
+		
+		var regions = [
+			region1 = new Region(0,0,50,50,'#00FF00', moveLeft),
+			region2 = new Region(270,0,50,50,'#00FF00', moveRight)
+		];
+		var move = new Move('camera_stream','canvas','canvas_blended',regions);
+		init();
 	
 	});
 })(jQuery);
