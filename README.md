@@ -6,17 +6,18 @@ Move.js is a javascript library that incorporates movement with your website's j
 Using the user's webcam, Move.js detects for movement in regions of the user's webcam video feed and triggers
 any function passed in.
 
-To use, create a video tag with any id.
+To use, create a video object with any id.
 E.G.
-  	<video id="camera_stream" width="640" height="480" autoplay></video>
+
+  	<video id="video_id" width="640" height="480" autoplay></video>
       
-Create two canvases of the same width and height. The first canvas is for receiving and interfacing with video. 
+Create two canvas objects of the same width and height. The first canvas is for receiving and interfacing with video. 
 The second one is responsible for detecting for motion. 
 
 E.G.
 
-	<canvas id="canvas" width="640" height="480"></canvas>
-	<canvas id="canvas_blended" width="640" height="480"></canvas>
+	<canvas id="canvas_id" width="640" height="480"></canvas>
+	<canvas id="canvas_blended_id" width="640" height="480"></canvas>
 
 To initialize Move.js, simply pass the id's of the video and canvases into the constructor. Additionally, to
 define regions in the video feed you want to detect for movement, you can create Region objects. A Region
@@ -35,9 +36,9 @@ E.G.
         
 Move's constructor takes in the id of the video tag, the id of a canvas you want to use 
 for video data interfacing, the id of a canvas you want to use for detecting motion, and an
-array of regions you want used.
+array of regions you want used. You can also optionally pass in a properties object.
         
-	var move = new Move('camera_stream','canvas','canvas_blended',regions);
+	var move = new Move('video_id','canvas_id','canvas_blended_id',regions);
         
 Don't just sit there; Move JS!!
 
