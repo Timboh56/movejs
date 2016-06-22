@@ -1,0 +1,26 @@
+{
+  "name": "movejs",
+  "version": "1.0.0",
+  "description": "Library for using region based motion detection to trigger events",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timboh56/movejs.git"
+  },
+  "keywords": [
+    "move",
+    "motion"
+  ],
+  "author": "Tim Hui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timboh56/movejs/issues"
+  },
+  "homepage": "https://github.com/Timboh56/movejs#readme"
+}

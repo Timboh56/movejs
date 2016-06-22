@@ -1,5 +1,5 @@
-
-var Region = function(properties){
+require('jQuery');
+exports.Region = var Region =  function(properties){
 	var properties = properties || {};
 
 	this.x = properties['x'],
@@ -20,7 +20,7 @@ Region.prototype.onMove = function() {
 	if (this.moveFunction != null) this.moveFunction();
 }
 
-var Move = (function($) {
+exports.Move = var Move = (function($) {
 
 	// initialize constructor takes parameters:
 	// 	id of video tag,
